@@ -15,4 +15,4 @@ This repository is a collection of discoveries made while asking questions about
 ### Basics
 
 - [How do I create a simple web component?](hello-world/README.md)
-- [How do I add styles to my component?](#)
+- [How do I add styles to my component?](hello-world-styles/README.md)
