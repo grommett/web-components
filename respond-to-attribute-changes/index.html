@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-loader.js"></script>
+  <script>
+    document.addEventListener("WebComponentsReady", function componentsReady() {
+      document.removeEventListener("WebComponentsReady", componentsReady, false);
+      const script = document.createElement("script");
+      script.src = "./custom-element.js";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    }, false);
+  </script>
+  <title>Web Components</title>
+</head>
+
+<body>
+  <p>
+    Custom Element attribute label changed to:
+  </p>
+  <custom-element label="Hello World"></custom-element>
+  <input type="text" />
+  <button>Change Attribute</button>
+  <script>
+    const customElement = document.querySelector('custom-element');
+    const button = document.querySelector('button');
+    const input = document.querySelector('input');
+
+    button.addEventListener('click', () => {
+      if (input.value) {
+        customElement.setAttribute('label', input.value);
+        input.value = '';
+      }
+    })
+  </script>
+</body>
+
+</html>
