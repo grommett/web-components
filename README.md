@@ -10,7 +10,7 @@ This repository is a collection of discoveries made while asking questions about
 - `npm run start`
 - In your browser go to `http://127.0.0.1:8080/`
 
-## Questions and Answers
+## Questions
 
 ### Basics
 
