@@ -1,0 +1,23 @@
+{
+  "name": "web-components",
+  "version": "1.0.0",
+  "description": "This repository is a collection of discoveries made while asking questions about Web Components and then setting out to find the answers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grommett/web-components.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grommett/web-components/issues"
+  },
+  "homepage": "https://github.com/grommett/web-components#readme",
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  }
+}
