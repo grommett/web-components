@@ -1,4 +1,4 @@
-# Hello World with polyfill
+# Respond to `attribute` changes
 
 ## Question - How do I make my component respond to `attribute` changes?
 
