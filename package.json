@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/grommett/web-components#readme",
   "devDependencies": {
+    "eslint": "^4.19.1",
     "http-server": "^0.11.1"
   }
 }
