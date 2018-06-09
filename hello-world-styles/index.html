@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Web Components</title>
+</head>
+
+<body>
+  <hello-world></hello-world>
+  <script>
+    class HelloWorld extends HTMLElement {
+      constructor() {
+        super();
+        const shadow = this.attachShadow({ mode: 'open' });
+        const pElement = document.createElement('p');
+        const styleElement = document.createElement('style');
+
+        styleElement.textContent = `p {
+          font-family: Arial; 
+          color: red;
+          }`;
+        pElement.textContent = 'Hello World!';
+
+        shadow.appendChild(styleElement);
+        shadow.appendChild(pElement);
+      }
+    }
+    customElements.define('hello-world', HelloWorld);
+  </script>
+</body>
+
+</html>
