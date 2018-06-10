@@ -11,12 +11,12 @@
 </head>
 
 <body>
-  <custom-element></custom-element>
+  <custom-element id="user-data"></custom-element>
   <script>
     customElements.whenDefined('custom-element').then(addRichDataToComponent);
 
     function addRichDataToComponent() {
-      const customElement = document.querySelector('custom-element');
+      const customElement = document.getElementById('user-data');
       customElement.user = {
         name: 'User Name',
         emailAddress: 'user@example.com',
