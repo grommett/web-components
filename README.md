@@ -18,4 +18,5 @@ This repository is a collection of discoveries made while asking questions about
 - [How do I add styles to my component?](hello-world-styles/README.md)
 - [How do I make my component cross browser compatible?](hello-world-cross-browser/README.md)
 - [How do I make my component respond to `attribute` changes?](respond-to-attribute-changes/README.md)
-- [How do I pass rich data to my web component?](pass-rich-data//README.md)
+- [How do I pass rich data to my web component?](pass-rich-data/README.md)
+- [How do I compose components and pass rich data through component tree?](compose-components/README.md)
