@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="./custom-element.js"></script>
+  <title>Web Components</title>
+</head>
+
+<body>
+  <custom-element></custom-element>
+  <script>
+    customElements.whenDefined('custom-element').then(addRichDataToComponent);
+
+    function addRichDataToComponent() {
+      const customElement = document.querySelector('custom-element');
+      customElement.user = {
+        name: 'User Name',
+        emailAddress: 'user@example.com',
+        title: 'Developer'
+      };
+    }
+  </script>
+</body>
+
+</html>
