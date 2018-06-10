@@ -5,15 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-loader.js"></script>
-  <script>
-    document.addEventListener("WebComponentsReady", function componentsReady() {
-      document.removeEventListener("WebComponentsReady", componentsReady, false);
-      const script = document.createElement("script");
-      script.src = "./hello-world-element.js";
-      document.getElementsByTagName("head")[0].appendChild(script);
-    }, false);
-  </script>
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="./hello-world-element.js"></script>
   <title>Web Components</title>
 </head>
 
