@@ -20,27 +20,31 @@ const products = [
 ];
 
 const style = `
-.product-container {
+.app * {
+  font-family: Helvetica, Arial, sans-serif;
+}
+.app {
   display: flex;
 }
-product-card {
+.app product-card {
   max-width: 300px;
   margin-right: 70px;
+  overflow: hidden;
 }
+
 `;
 
 export class ProductApp extends HTMLElement {
   constructor() {
     super();
-    const shadow = this.attachShadow({ mode: 'open' });
-    const styleEl = document.createElement('style');
+    this.shadow = this.attachShadow({ mode: 'open' });
     const container = document.createElement('div');
+    const styleEl = document.createElement('style');
 
-    container.setAttribute('class', 'product-container');
     styleEl.textContent = style;
-
-    shadow.appendChild(styleEl);
-    shadow.appendChild(container);
+    container.className = 'app';
+    this.shadow.appendChild(styleEl);
+    this.shadow.appendChild(container);
 
     this.createProductCards(products).forEach(card =>
       container.appendChild(card)

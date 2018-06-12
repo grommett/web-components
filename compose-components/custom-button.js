@@ -1,7 +1,5 @@
-const host = window.ShadyDOM ? '.style-scope.product-app' : ':host';
-
 const style = `
-${host} button {
+.custom-button {
   background-color: #000;
   border: none;
   padding: 10px 20px;
@@ -14,16 +12,17 @@ ${host} button {
 export class CustomButton extends HTMLElement {
   constructor() {
     super();
-    const shadow = this.attachShadow({ mode: 'open' });
+
+    const shadow = (this.shadow = this.attachShadow({ mode: 'open' }));
     this.button = document.createElement('button');
-    const styleEl = document.createElement('style');
+    this.styleEl = document.createElement('style');
 
-    styleEl.textContent = style;
-    this.button.textContent =
-      this.getAttribute('label') || 'Click me';
+    this.styleEl.textContent = style;
+    this.button.className = 'custom-button';
+    this.button.textContent = this.getAttribute('label') || 'Click me';
 
+    shadow.appendChild(this.styleEl);
     shadow.appendChild(this.button);
-    shadow.appendChild(styleEl);
   }
 
   static get observedAttributes() {

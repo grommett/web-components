@@ -1,16 +1,11 @@
 import { CustomButton } from './custom-button.js'; // eslint-disable-line no-unused-vars
 
-const host = window.ShadyDOM ? '.style-scope.product-app' : ':host';
-
 const style = `
-${host} *{
-  font-family: Helvetica, Arial, sans-serif;
-}
-${host} h1 {
+.product-card h1 {
   font-size: 18px;
 }
 
-${host} img{
+.product-card img{
   width: 100%;
   max-width: 200px;
 }
@@ -21,6 +16,7 @@ export class ProductCard extends HTMLElement {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     const styleEl = document.createElement('style');
+    const productCard = document.createElement('div');
     this.h1 = document.createElement('h1');
     this.button = document.createElement('custom-button');
     this.description = document.createElement('p');
@@ -28,15 +24,17 @@ export class ProductCard extends HTMLElement {
     this.image = document.createElement('img');
 
     this.button.setAttribute('label', 'Buy Product');
+    productCard.className = 'product-card';
     this.h1.textContent = 'Product Card';
     styleEl.textContent = style;
 
     shadow.appendChild(styleEl);
-    shadow.appendChild(this.h1);
-    shadow.appendChild(this.image);
-    shadow.appendChild(this.description);
-    shadow.appendChild(this.price);
-    shadow.appendChild(this.button);
+    shadow.appendChild(productCard);
+    productCard.appendChild(this.h1);
+    productCard.appendChild(this.image);
+    productCard.appendChild(this.description);
+    productCard.appendChild(this.price);
+    productCard.appendChild(this.button);
   }
 
   set productData(data) {
