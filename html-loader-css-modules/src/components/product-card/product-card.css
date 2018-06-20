@@ -1,0 +1,12 @@
+.button {
+  background-color: rebeccapurple;
+  border: none;
+  padding: 5px 10px;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.h1 {
+  font-family: Arial, Helvetica, sans-serif;
+}
