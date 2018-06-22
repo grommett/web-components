@@ -1,3 +1,5 @@
+// this needs to be imported so that <product-card />
+// is available when this is used
 import { ProductCard } from './product-card.js'; // eslint-disable-line no-unused-vars
 
 export class ProductApp extends HTMLElement {
@@ -15,7 +17,9 @@ export class ProductApp extends HTMLElement {
   }
 
   async connectedCallback() {
-    const productData = await this.getProductData();
+    const productData = await this.delayPromise(
+      this.getProductData()
+    );
     this.addProductCards(productData);
   }
 
@@ -24,6 +28,17 @@ export class ProductApp extends HTMLElement {
       if (response.ok) {
         return response.json();
       }
+    });
+  }
+
+  // Just to see the loading state
+  delayPromise(promise) {
+    return new Promise(resolve => {
+      promise.then(data => {
+        setTimeout(() => {
+          resolve(data);
+        }, 1500);
+      });
     });
   }
 
@@ -36,7 +51,7 @@ export class ProductApp extends HTMLElement {
 
   removeNodes(element) {
     while (element.firstChild) {
-      element.removeChild(element.firstChild);
+      element.firstChild.remove();
     }
   }
 
