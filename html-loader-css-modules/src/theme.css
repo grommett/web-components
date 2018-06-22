@@ -1,0 +1,28 @@
+:host {
+  --fonts: Helvetica, Arial, sans-serif;
+}
+
+.font {
+  font-family: var(--fonts);
+}
+
+.h1 {
+  font-size: 24px;
+  font-family: var(--fonts);
+}
+
+.h2 {
+  font-size: 18px;
+  font-family: var(--fonts);
+}
+
+.button {
+  font-family: var(--fonts);
+  background-color: #000;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+}
