@@ -1,23 +1,23 @@
 import css from './app.css';
-import { r } from '../lib/renderer';
+import { r } from '../lib/renderer'; // jsx handler
+import theme from './theme.css';
 import { ProductCard } from './components/product-card/product-card';
-import { MyCE } from './example';
 
 export class App extends HTMLElement {
   constructor() {
     super();
     this.shadow = this.attachShadow({ mode: 'open' });
+    theme.insertInto(this.shadow);
     css.insertInto(this.shadow);
   }
 
   async connectedCallback() {
-    this.shadow.appendChild(this.render());
     const data = await this.getProductData();
-    // console.log(data);
+    this.shadow.appendChild(this.render(data));
   }
 
-  handleClick(e) {
-    console.log('card callback in app');
+  handleClick(sku) {
+    console.log(sku);
   }
 
   getProductData() {
@@ -28,18 +28,29 @@ export class App extends HTMLElement {
     });
   }
 
-  render() {
-    console.log('rendering');
+  render(data) {
+    const { productContainer } = css;
+    const { h1 } = theme;
     return (
       <fragment>
-        <h1 class={css.root}>An Application</h1>
-        <ProductCard name="OWC Product" handleClick={this.handleClick}>
-          A Description
-        </ProductCard>
-        <my-ce />
+        <h1 class={h1}>Products</h1>
+        <div class={productContainer}>
+          {data.map(item => (
+            <ProductCard
+              handleClick={this.handleClick}
+              sku={item.sku}
+              name={item.name}
+              label={item.cta}
+              source={`/assets/${item.image}`}
+            >
+              {item.description}
+            </ProductCard>
+          ))}
+        </div>
       </fragment>
     );
   }
 }
+
 App.tagName = 'x-app';
 customElements.define('x-app', App);
