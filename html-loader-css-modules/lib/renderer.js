@@ -17,47 +17,53 @@ function createElement(el) {
   }
 }
 
-function addProps(node, props = {}) {
+function addProps(node, props) {
   if (!props) return node;
-  Object.keys(props).forEach(prop => {
-    if (isPrimitive(props[prop])) {
-      node.setAttribute(prop, props[prop]);
-    } else {
-      if (isEvent(prop)) {
-        const event = prop.slice(2).toLowerCase();
-        node.addEventListener(event, props[prop]);
-      } else {
-        if (prop === 'ref') {
-          props[prop](node);
-        } else {
-          node[prop] = props[prop];
-        }
-      }
-    }
-  });
+  Object.keys(props).forEach(addProp.bind(null, node, props));
   return node;
 }
 
+function addProp(node, props, prop) {
+  const event = prop.slice(2).toLowerCase();
+  switch (true) {
+    case isPrimitive(props[prop]):
+      node.setAttribute(prop, props[prop]);
+      node[prop] = props[prop];
+      break;
+    case isEvent(prop):
+      node.addEventListener(event, props[prop]);
+      break;
+    case prop === 'ref':
+      props[prop](node);
+      break;
+    default:
+      node[prop] = props[prop];
+  }
+}
+
 function addChildren(node, children) {
-  children.forEach(child => {
-    if (isPrimitive(child)) {
-      node.appendChild(document.createTextNode(child));
-    } else {
-      if (Array.isArray(child)) {
-        addChildren(node, child);
-      } else {
-        child && node.appendChild(child);
-      }
-    }
-  });
+  children.forEach(addChild.bind(null, node));
   return node;
+}
+
+function addChild(node, child) {
+  switch (true) {
+    case isPrimitive(child):
+      node.appendChild(document.createTextNode(child));
+      break;
+    case Array.isArray(child):
+      addChildren(node, child);
+      break;
+    default:
+      child && node.appendChild(child);
+  }
 }
 
 function isPrimitive(prop) {
   return (
-    (typeof prop === 'string') |
-    (typeof prop === 'boolean') |
-    (typeof prop === 'number')
+    typeof prop === 'string' ||
+    typeof prop === 'boolean' ||
+    typeof prop === 'number'
   );
 }
 
