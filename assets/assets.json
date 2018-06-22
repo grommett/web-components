@@ -1,10 +1,10 @@
 [
   {
     "name": "Vans Old School",
-    "description": "UA OLD SKOOL - Sneaker low",
+    "description": "OLD SKOOL - Sneaker low",
     "image": "vans-red-check.jpg",
     "price": "$10",
-    "cta": "Buy these Vans!",
+    "cta": "Buy these Vans",
     "sku": "dcf3543b"
   },
   {
@@ -12,7 +12,7 @@
     "description": "AIR VORTEX - Sneaker low",
     "image": "nike-black.jpg",
     "price": "$5",
-    "cta": "Buy these Nikes!",
+    "cta": "Buy these Nikes",
     "sku": "cd5ba49b"
   }
 ]
