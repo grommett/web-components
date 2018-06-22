@@ -1,5 +1,12 @@
-.root {
-  background-color: red;
-  font-size: 16px;
-  font-family: Arial, Helvetica, sans-serif;
+.productContainer {
+  display: flex;
+}
+
+.productContainer product-card {
+  margin-right: 100px;
+  width: 200px;
+}
+
+.productContainer product-card:last-child {
+  margin-right: 0;
 }
